@@ -1,4 +1,4 @@
-include("api")
+include(":api")
 include(":util")
 include(":microservices:product-service")
 include(":microservices:review-service")

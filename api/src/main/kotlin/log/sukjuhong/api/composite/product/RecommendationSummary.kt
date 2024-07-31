@@ -1,4 +1,4 @@
-package composite.product
+package log.sukjuhong.api.composite.product
 
 data class RecommendationSummary(
     val recommendationId: Int,

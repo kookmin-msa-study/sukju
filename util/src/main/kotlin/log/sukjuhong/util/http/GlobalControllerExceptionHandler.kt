@@ -2,6 +2,7 @@ package http
 
 import log.sukjuhong.util.exceptions.InvalidInputException
 import log.sukjuhong.util.exceptions.NotFoundException
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.server.ServerHttpRequest
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class GlobalControllerExceptionHandler {
 
     companion object {
-        private val log = LoggerFactory.getLogger(this::class.java)
+        private val LOG: Logger = LoggerFactory.getLogger(GlobalControllerExceptionHandler::class.java)
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -32,7 +33,7 @@ class GlobalControllerExceptionHandler {
         val path = request.uri.path
         val message = ex.message
 
-        log.debug("Returning HTTP status: {} for path: {}, message: {}", httpStatus, path, message)
+        LOG.debug("Returning HTTP status: {} for path: {}, message: {}", httpStatus, path, message)
         return HttpErrorInfo(httpStatus, path, message)
     }
 }

@@ -1,4 +1,4 @@
-package composite.product
+package log.sukjuhong.api.composite.product
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

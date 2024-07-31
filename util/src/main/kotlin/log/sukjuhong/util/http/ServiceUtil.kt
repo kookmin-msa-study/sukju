@@ -1,7 +1,5 @@
 package log.sukjuhong.util.http
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.net.InetAddress
@@ -10,20 +8,16 @@ import java.net.UnknownHostException
 @Component
 class ServiceUtil {
 
-    companion object {
-        val log: Logger = LoggerFactory.getLogger(ServiceUtil::class.java)
-    }
-
     @Value("\${server.port}")
     private lateinit var port: String
 
-    private var serviceAddress: String? = null
+    private var _serviceAddress: String? = null
 
     fun getServiceAddress(): String {
-        if (serviceAddress == null) {
-            serviceAddress = findMyHostName() + "/" + findMyIpAddress() + ":" + port
+        if (_serviceAddress == null) {
+            _serviceAddress = findMyHostName() + "/" + findMyIpAddress() + ":" + port
         }
-        return serviceAddress ?: "unknown service address"
+        return _serviceAddress ?: "unknown service address"
     }
 
     fun findMyHostName(): String {
